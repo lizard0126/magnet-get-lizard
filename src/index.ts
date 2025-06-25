@@ -78,7 +78,7 @@ export const Config: Schema<Config> = Schema.object({
 })
 
 export function apply(ctx: Context, config) {
-  ctx.command('magnet <keyword>', '关键词搜索磁链资源')
+  ctx.command('搜片 <keyword>', '关键词搜索磁链资源')
     .action(async ({ session }, keyword) => {
       if (!keyword) return '未输入关键词！'
 
