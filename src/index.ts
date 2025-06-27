@@ -69,8 +69,7 @@ export const Config: Schema<Config> = Schema.object({
     .description('如果一直搜索失败，可以更换站点再试'),
   maxResults: Schema.number()
     .min(1)
-    .max(10)
-    .default(3)
+    .default(5)
     .description('搜索结果展示数量'),
   ifMessage: Schema.boolean()
     .default(false)
@@ -89,9 +88,14 @@ export function apply(ctx: Context, config) {
         await page.goto(searchUrl, { waitUntil: 'domcontentloaded' })
 
         let links = await page.$$eval('.file-list tr a', (elements, max, site) => {
-          return elements.map(el => (el as HTMLAnchorElement).getAttribute('href'))
+          return elements
+            .filter(el => {
+              return Array.from(el.childNodes).some(node => node.nodeName === 'B')
+            })
+            .map(el => (el as HTMLAnchorElement).getAttribute('href'))
             .filter(href => href)
             .map(href => site + href)
+            .reverse()
             .slice(0, max)
         }, config.maxResults, config.site)
 
