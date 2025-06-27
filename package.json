@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-magnet-get-lizard",
-  "description": "获取磁链资源，比我的另一个插件[javbus-lizard](https://github.com/lizard0126/javbus-lizard)收集的快。支持搜索国产资源",
-  "version": "0.0.1",
+  "description": "获取NSFW磁链资源，比我的另一个插件[javbus-lizard](https://github.com/lizard0126/javbus-lizard)收集的快。支持搜索国产",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lizard0126/magnet-get-lizard.git"
